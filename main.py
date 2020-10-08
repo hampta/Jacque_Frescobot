@@ -22,7 +22,7 @@ help_message = "Список команд для бота:\n" \
 @dp.message_handler(commands=["dm"])
 async def generate_modern(message: types.Message):
     try:
-        file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
+        file_name = f"photos/{message.chat.id}_{time.time()}.png"
         textch = await textcheck(message)
         attachments = await check(message)
         if attachments == "message_photo":
