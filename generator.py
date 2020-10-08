@@ -9,7 +9,7 @@ font = "TimesNewRomanPSMT.ttf"
 def classic(self, text1, text2=''):
     lines1 = textwrap.wrap(text1, width=30)
     lines2 = textwrap.wrap(text2, width=45)
-    src_file = Image.open(f'tmp/{self}')
+    src_file = Image.open(f'{self}')
     base = Image.new('RGB', (640, 430 + 35 * len(lines1) + 25 * len(lines2)))
     base.paste(src_file.resize((555, 370), Image.LANCZOS), (43, 25))
     d = ImageDraw.Draw(base)
@@ -31,7 +31,7 @@ def classic(self, text1, text2=''):
 
 
 def auto(self, text1, text2=''):
-    src_file = Image.open(f'tmp/{self}')
+    src_file = Image.open(f'{self}')
     file_s1 = src_file.size[0] + 50
     file_s2 = src_file.size[1] + 50
     lines1 = textwrap.wrap(text1, width=src_file.size[0] // 18)
