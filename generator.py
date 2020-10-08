@@ -52,7 +52,7 @@ def auto(self, text1, text2=''):
     for line in lines2:
         d.text(((base.width - d.textsize(line, fnt2)[0]) / 2, h2), line, font=fnt2)
         h2 += 25
-    base.save(f'{self}.jpg')
+    base.convert("RGB").save(f'{self}.jpg')
     return f'{self}.jpg'
 
 
