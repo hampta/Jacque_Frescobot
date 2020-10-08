@@ -35,7 +35,7 @@ def auto(self, text1, text2=''):
     file_s1 = src_file.size[0] + 50
     file_s2 = src_file.size[1] + 50
     _src_file = Image.new("RGB", size=src_file.size)
-    _src_file.paste(src_file, Image.LANCZOS)
+    _src_file  = Image.alpha_composite(_src_file,src_file)
     lines1 = textwrap.wrap(text1, width=src_file.size[0] // 18)
     lines2 = textwrap.wrap(text2, width=src_file.size[0] // 15)
     base = _src_file.crop((-50, -50, file_s1, src_file.size[1] + 20 + 35 * len(lines1) + 25 * len(lines2)))
