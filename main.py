@@ -18,6 +18,7 @@ help_message = "Список команд для бота:\n" \
                "Канал с демотиваторами из бота: https://t.me/Jacque_Fresco_memes"
 
 
+
 @dp.message_handler(commands=["dm"])
 async def generate_modern(message: types.Message):
     try:
