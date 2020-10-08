@@ -6,7 +6,7 @@ import textwrap
 font = "TimesNewRomanPSMT.ttf"
 
 
-def classic(self, text1, text2):
+def classic(self, text1, text2=''):
     lines1 = textwrap.wrap(text1, width=30)
     lines2 = textwrap.wrap(text2, width=45)
     src_file = Image.open(f'tmp/{self}')
@@ -30,7 +30,7 @@ def classic(self, text1, text2):
     return f'tmp/{self}'
 
 
-def auto(self, text1, text2):
+def auto(self, text1, text2=''):
     src_file = Image.open(f'tmp/{self}')
     file_s1 = src_file.size[0] + 50
     file_s2 = src_file.size[1] + 50
