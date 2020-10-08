@@ -19,7 +19,7 @@ help_message = "Список команд для бота:\n" \
 
 
 @dp.message_handler(commands=["dm"])
-async def generate(message: types.Message):
+async def generatemodern(message: types.Message):
     try:
         file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
         textch = await textcheck(message)
@@ -52,7 +52,7 @@ async def generate(message: types.Message):
 
 
 @dp.message_handler(commands=["dc"])
-async def generate(message: types.Message):
+async def generateclassic(message: types.Message):
     try:
         file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
         textch = await textcheck(message)
