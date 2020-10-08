@@ -1,0 +1,5 @@
+aiogram==2.10.1
+vbml==0.5.93
+Pillow==7.2.0
+tortoise-orm==0.16.15
+aiomysql==0.0.20
