@@ -34,6 +34,16 @@ async def generate_modern(message: types.Message):
         elif attachments == "sticker":
             if textch is not None:
                 await message.reply_to_message.sticker.download(destination=file_name)
+                if textch is None:
+                    return
+                if len(textch["text"]) == 1:
+                    media = InputFile(classic(file_name, textch["text"][0]))
+                elif len(textch["text"]) >= 2:
+                    media = InputFile(classic(file_name, textch["text"][0], textch["text"][1]))
+                await bot.send_photo(chat_id=message.chat.id, photo=media, reply_to_message_id=message.message_id)
+                os.remove(file_name)
+                await statistics_write(message.chat.id)
+                return
         elif attachments == "anim_sticker":
             await bot.send_message(chat_id=message.chat.id, text=f"Анимированный стикер не подходит!")
         else:
