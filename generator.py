@@ -36,8 +36,7 @@ def auto(self, text1, text2=''):
     file_s2 = src_file.size[1] + 50
     lines1 = textwrap.wrap(text1, width=src_file.size[0] // 18)
     lines2 = textwrap.wrap(text2, width=src_file.size[0] // 15)
-    base = Image.new('RGB', (file_s1, file_s2))
-    base.paste(src_file.crop((-50, -50, src_file.size[0] + 50, src_file.size[1] + 20 + 35 * len(lines1) + 25 * len(lines2))))
+    base = src_file.crop((-50, -50, src_file.size[0] + 50, src_file.size[1] + 20 + 35 * len(lines1) + 25 * len(lines2)))
     d = ImageDraw.Draw(base)
     d.rectangle((50, 50, file_s1, file_s2), fill=None, outline='white')
     for i in range(int(3)):
