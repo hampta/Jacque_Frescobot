@@ -19,7 +19,7 @@ help_message = "Список команд для бота:\n" \
 
 
 @dp.message_handler(commands=["dm"])
-async def generatemodern(message: types.Message):
+async def generate_modern(message: types.Message):
     try:
         file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
         textch = await textcheck(message)
@@ -51,8 +51,8 @@ async def generatemodern(message: types.Message):
         await bot.send_message(chat_id=message.chat.id, text=f"ERROR код ошибки \n{e}")
 
 
-@dp.message_handler(commands=["dc"])
-async def generateclassic(message: types.Message):
+@dp.message_handler(commands=["dmc"])
+async def generate_classic(message: types.Message):
     try:
         file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
         textch = await textcheck(message)
@@ -74,7 +74,7 @@ async def generateclassic(message: types.Message):
         if textch is None:
             return
         if len(textch["text"]) == 1:
-            media = InputFile(classic(file_name, textch["text"][0]))
+            media = InputFile(classic(file_name, textch["text"][0], ''))
         elif len(textch["text"]) >= 2:
             media = InputFile(classic(file_name, textch["text"][0], textch["text"][1]))
         await bot.send_photo(chat_id=message.chat.id, photo=media, reply_to_message_id=message.message_id)
