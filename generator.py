@@ -26,8 +26,8 @@ def classic(self, text1, text2=''):
     for line in lines2:
         d.text(((base.width - d.textsize(line, fnt2)[0]) / 2, h2), line, font=fnt2)
         h2 += 25
-    base.save(f'tmp/{self}')
-    return f'tmp/{self}'
+    base.save(f'{self}')
+    return f'{self}'
 
 
 def auto(self, text1, text2=''):
@@ -50,8 +50,8 @@ def auto(self, text1, text2=''):
     for line in lines2:
         d.text(((base.width - d.textsize(line, fnt2)[0]) / 2, h2), line, font=fnt2)
         h2 += 25
-    base.save(f'tmp/{self}')
-    return f'tmp/{self}'
+    base.save(f'{self}')
+    return f'{self}'
 
 
 async def dem_gen(self):
