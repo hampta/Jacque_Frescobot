@@ -1,5 +1,6 @@
 from PIL import Image, ImageDraw, ImageFont
-import aiohttp, aiofiles
+import aiohttp
+import aiofiles
 import textwrap
 
 font = "TimesNewRomanPSMT.ttf"

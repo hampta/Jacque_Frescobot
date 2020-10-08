@@ -3,3 +3,5 @@ vbml==0.5.93
 Pillow==7.2.0
 tortoise-orm==0.16.15
 aiomysql==0.0.20
+aiohttp~=3.6.2
+aiofiles~=0.5.0
