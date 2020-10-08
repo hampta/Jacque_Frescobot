@@ -5,7 +5,7 @@ import time
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import InputFile, ContentType
 from defines import *
-from generator import *
+from generator import auto, classic
 
 bot = Bot(str(os.getenv("TOKEN")))
 dp = Dispatcher(bot)
@@ -19,7 +19,6 @@ help_message = "Список команд для бота:\n" \
 
 
 @dp.message_handler(commands=["dm"])
-@dp.message_handler(content_types=ContentType.PHOTO)
 async def generate(message: types.Message):
     try:
         file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
@@ -53,7 +52,6 @@ async def generate(message: types.Message):
 
 
 @dp.message_handler(commands=["dc"])
-@dp.message_handler(content_types=ContentType.PHOTO)
 async def generate(message: types.Message):
     try:
         file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
