@@ -24,7 +24,7 @@ class Event(Model):
 
 patcher = Patcher(validators=Validators)
 text_pattern = patcher.pattern("/dm <(//)*text>")
-text_pattern2 = patcher.pattern("/da <(//)*text>")
+text_pattern2 = patcher.pattern("/dmc <(//)*text>")
 
 
 async def call():
@@ -67,9 +67,12 @@ async def textcheck2(message: types.Message):
     text = patcher.check(message.text, text_pattern2)
     return text
 
+
+
 # async def check(message: types.Message) -> bool:
 #    if message.reply_to_message and message.reply_to_message.photo:
 #        return True
+
 
 async def statistics_write(tg_chat_id):
     await call()
@@ -81,6 +84,7 @@ async def statistics_write(tg_chat_id):
     else:
         used = info[0]['used']
     await Event.filter(chat_id=tg_chat_id).update(used=used+1)
+
 
 async def statistics_read(chat_id):
     await call()
@@ -97,3 +101,4 @@ async def statistics_read(chat_id):
           f"Использовалось в этом чате: " \
           f"{info_chat[0]['used']}"
     return mes
+
