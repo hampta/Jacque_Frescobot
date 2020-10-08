@@ -34,9 +34,11 @@ def auto(self, text1, text2=''):
     src_file = Image.open(f'{self}')
     file_s1 = src_file.size[0] + 50
     file_s2 = src_file.size[1] + 50
+    _src_file = Image.new((file_s1, file_s2), 'black')
+    _src_file.paste(src_file)
     lines1 = textwrap.wrap(text1, width=src_file.size[0] // 18)
     lines2 = textwrap.wrap(text2, width=src_file.size[0] // 15)
-    base = src_file.crop((-50, -50, src_file.size[0] + 50, src_file.size[1] + 20 + 35 * len(lines1) + 25 * len(lines2)))
+    base = _src_file.crop((-50, -50, src_file.size[0] + 50, src_file.size[1] + 20 + 35 * len(lines1) + 25 * len(lines2)))
     d = ImageDraw.Draw(base)
     d.rectangle((50, 50, file_s1, file_s2), fill=None, outline='white')
     for i in range(int(3)):
@@ -50,9 +52,8 @@ def auto(self, text1, text2=''):
     for line in lines2:
         d.text(((base.width - d.textsize(line, fnt2)[0]) / 2, h2), line, font=fnt2)
         h2 += 25
-    d.convert("RGB")
-    base.save(f'{self}.jpg', "JPEG")
-    return f'{self}.jpg'
+    base.save(f'{self}')
+    return f'{self}'
 
 
 async def dem_gen(self):
