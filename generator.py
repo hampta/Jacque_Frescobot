@@ -34,7 +34,7 @@ def auto(self, text1, text2=''):
     src_file = Image.open(f'{self}')
     file_s1 = src_file.size[0] + 50
     file_s2 = src_file.size[1] + 50
-    _src_file = Image.new("RGB", size=src_file.size)
+    _src_file = Image.new("RGBA", size=src_file.size)
     _src_file.paste(src_file)
     lines1 = textwrap.wrap(text1, width=src_file.size[0] // 18)
     lines2 = textwrap.wrap(text2, width=src_file.size[0] // 15)
@@ -52,8 +52,8 @@ def auto(self, text1, text2=''):
     for line in lines2:
         d.text(((base.width - d.textsize(line, fnt2)[0]) / 2, h2), line, font=fnt2)
         h2 += 25
-    base.save(f'{self}')
-    return f'{self}'
+    base.save(f'{self}.webp')
+    return f'{self}.webp'
 
 
 async def dem_gen(self):
