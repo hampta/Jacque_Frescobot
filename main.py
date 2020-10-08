@@ -22,7 +22,7 @@ help_message = "Список команд для бота:\n" \
 @dp.message_handler(commands=["dm"])
 async def generate_modern(message: types.Message):
     try:
-        file_name = f"photos/{message.chat.id}_{time.time()}.webp"
+        file_name = f"photos/{message.chat.id}_{time.time()}.png"
         textch = await textcheck(message)
         attachments = await check(message)
         if attachments == "message_photo":
@@ -47,7 +47,6 @@ async def generate_modern(message: types.Message):
             media = InputFile(auto(file_name, textch["text"][0], textch["text"][1]))
         await bot.send_photo(chat_id=message.chat.id, photo=media, reply_to_message_id=message.message_id)
         os.remove(file_name)
-        os.remove(f'{file_name}.webp')
         await statistics_write(message.chat.id)
     except Exception as e:
         await bot.send_message(chat_id=message.chat.id, text=f"ERROR код ошибки \n{e}")
