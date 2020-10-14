@@ -7,7 +7,6 @@ from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.filters import Command
 from aiogram.types import InputFile, ContentType
 from defines import *
-from imagemagick import *
 from generator import auto, classic
 
 # bot = Bot(str(os.getenv("TOKEN")))
