@@ -6,8 +6,8 @@ from aiogram import types
 import os
 import time
 from generator import classic, auto
-from wand.display import display
 from wand.image import Image
+from PIL import Image as Im
 
 
 class Validators(PatchedValidators):
@@ -52,6 +52,8 @@ async def check(message: types.Message, file_name):
     if message.reply_to_message and message.reply_to_message.sticker:
         if not message.reply_to_message.sticker.is_animated:
             await message.reply_to_message.sticker.download(destination=file_name)
+            src_file = Im.open(file_name)
+            src_file.save(file_name, "PNG")
             return True
         else:
             return False
