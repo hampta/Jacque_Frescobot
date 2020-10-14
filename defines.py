@@ -58,6 +58,7 @@ async def check(message: types.Message, file_name):
     else:
         return None
 
+
 async def check_dem(message: types.Message):
     if message.photo:
         return "message_photo"
@@ -70,6 +71,7 @@ async def check_dem(message: types.Message):
             return False
     else:
         return None
+
 
 async def text_check(message: types.Message):
     if text_pattern(message.text) is not None:
@@ -191,7 +193,7 @@ async def liquid_photo(message):
 
 
 async def swirl_photo(message):
-    file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
+    file_name = f"photos/{message.chat.id}_{time.time()}.png"
     text = await text_check_swirl(message)
     if await check(message, file_name):
         ratio = text['ratio']
@@ -205,7 +207,7 @@ async def swirl_photo(message):
 
 
 async def wave_photo(message):
-    file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
+    file_name = f"photos/{message.chat.id}_{time.time()}.png"
     text = await text_check_wave(message)
     if await check(message, file_name):
         ratio = text['ratio']
@@ -220,7 +222,7 @@ async def wave_photo(message):
 
 
 async def contrast_photo(message):
-    file_name = f"photos/{message.chat.id}_{time.time()}.jpg"
+    file_name = f"photos/{message.chat.id}_{time.time()}.png"
     text = await text_check_contrast(message)
     if await check(message, file_name):
         ratio = text['ratio']
