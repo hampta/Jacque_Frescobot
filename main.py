@@ -9,12 +9,10 @@ from aiogram.types import InputFile, ContentType
 from defines import *
 from generator import auto, classic
 
-# bot = Bot(str(os.getenv("TOKEN")))
+bot = Bot(str(os.getenv("TOKEN")))
 
-bot = Bot("1337136747:AAGJU8T-EUXZpR_xoUl7hTcLfvV8IXKBhaU")
 dp = Dispatcher(bot)
 logging.basicConfig(level=logging.INFO)
-sys.setrecursionlimit(2024)
 skip_list = ["Анимированный стикер не подходит!", "А текст где", "А где картинка", "Допустимый коэфициент от 1 до 200",
              "Недопустимый коэфициент"]
 
