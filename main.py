@@ -10,9 +10,9 @@ from defines import *
 from generator import auto, classic
 
 bot = Bot(str(os.getenv("TOKEN")))
-
 dp = Dispatcher(bot)
 logging.basicConfig(level=logging.INFO)
+
 skip_list = ["Анимированный стикер не подходит!", "А текст где", "А где картинка", "Допустимый коэфициент от 1 до 200",
              "Недопустимый коэфициент"]
 
@@ -55,7 +55,6 @@ async def text_in_handler(message: types.Message):
 @dp.message_handler(Command(["cas"], ignore_caption=False), content_types=[ContentType.TEXT, ContentType.PHOTO])
 async def liquid(message: types.Message):
     photo = await liquid_photo(message)
-    print(photo)
     if photo in skip_list:
         await bot.send_message(chat_id=message.chat.id, text=photo)
     else:
@@ -63,11 +62,11 @@ async def liquid(message: types.Message):
         os.remove(photo)
     await statistics_write(message.chat.id)
 
-@dp.message_handler(Command(["sw"]),
+
+@dp.message_handler(Command(["swirl"]),
                     content_types=[ContentType.TEXT, ContentType.PHOTO])
 async def swirl(message: types.Message):
     photo = await swirl_photo(message)
-    print(photo)
     if photo in skip_list:
         await bot.send_message(chat_id=message.chat.id, text=photo)
     else:
@@ -80,7 +79,6 @@ async def swirl(message: types.Message):
                     content_types=[ContentType.TEXT, ContentType.PHOTO])
 async def swirl(message: types.Message):
     photo = await wave_photo(message)
-    print(photo)
     if photo in skip_list:
         await bot.send_message(chat_id=message.chat.id, text=photo)
     else:
@@ -88,11 +86,11 @@ async def swirl(message: types.Message):
         os.remove(photo)
     await statistics_write(message.chat.id)
 
-@dp.message_handler(Command(["contast"]),
+
+@dp.message_handler(Command(["contrast"]),
                     content_types=[ContentType.TEXT, ContentType.PHOTO])
 async def swirl(message: types.Message):
     photo = await contrast_photo(message)
-    print(photo)
     if photo in skip_list:
         await bot.send_message(chat_id=message.chat.id, text=photo)
     else:

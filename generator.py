@@ -21,7 +21,6 @@ def classic(self, text1, text2=''):
     h1, h2 = 405, 420 + 35 * len(lines1)
     for line in lines1:
         d.text((((base.width - d.textsize(line, fnt1)[0]) / 2), h1), line, font=fnt1)
-        print(d.textsize(line, fnt1))
         h1 += 35
     for line in lines2:
         d.text(((base.width - d.textsize(line, fnt2)[0]) / 2, h2), line, font=fnt2)
