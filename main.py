@@ -19,6 +19,7 @@ help_message = "Список команд для бота:\n" \
 
 
 
+
 @dp.message_handler(commands=["dm"])
 async def generate_modern(message: types.Message):
     try:
