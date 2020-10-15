@@ -30,11 +30,10 @@ class Event(Model):
 
 patcher = Patcher(validators=Validators)
 text_pattern = patcher.pattern("/dm <(//)*text>")
-text_pattern2 = patcher.pattern("/liquid <ratio:int>")
+text_pattern2 = patcher.pattern("/cas <ratio:int>")
 text_pattern3 = patcher.pattern("/swirl <ratio>")
 text_pattern4 = patcher.pattern("/wave <ratio:int> <length:int>")
 text_pattern5 = patcher.pattern("/contrast <ratio:int>")
-text_pattern6 = patcher.pattern("/jpeg <ratio:int>")
 
 
 async def call():
@@ -123,7 +122,7 @@ async def text_check_contrast(message: types.Message):
 async def statistics_write(tg_chat_id):
     await call()
     info = await Event.filter(chat_id=tg_chat_id).values()
-    if info == []:
+    if not info:
         await Event.create(chat_id=tg_chat_id, used=0)
         used = 0
     else:
@@ -138,7 +137,7 @@ async def statistics_read(chat_id):
     all_used = 0
     for i in info:
         all_used += i['used']
-    mes = f"Сколько бесед\Пользователей хоть раз использовало бота: " \
+    mes = f"Сколько бесед\Пользователей хоть раз использовало бота:" \
           f"{len(info)}\n" \
           f"Всего использований: " \
           f"{all_used}\n" \
@@ -235,4 +234,3 @@ async def contrast_photo(message):
                 return file_name
     else:
         return "Нужна картинка или стикер!"
-

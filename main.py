@@ -3,11 +3,10 @@ import os
 import time
 import sys
 
-from aiogram import Bot, Dispatcher, executor, types
+from aiogram import Bot, Dispatcher, executor
 from aiogram.dispatcher.filters import Command
 from aiogram.types import InputFile, ContentType
 from defines import *
-from generator import auto, classic
 
 bot = Bot(str(os.getenv("TOKEN")))
 dp = Dispatcher(bot)
@@ -17,14 +16,14 @@ skip_list = ["Анимированный стикер не подходит!", "
              "Недопустимый коэфициент", "Нужна картинка или стикер!"]
 
 help_message = "Список команд для бота:\n" \
-                "/help - помощь\n"\
-                "/dm  -  Текст//текст генерирует демотиватор\n"\
-                "/cas  -<коэффициент> (по стандарту  30)  Content Aware Scale, сжимает фото\n"\
-                "/contrast  - <коэффициент>  (по стандарту -100) Повышение контраста\n"\
-                "/swirl - <коэффициент> (по стандарту 90) Применяет эффект \"Вихрь\"\n"\
-                "/wave  - <Амплитуда волны> <Размер волны> (по стандарту 30 и 90) Применяет эффект \"Волна\"\n"\
-                "/stats - Статистика бота\n"\
-                "Канал с демотиваторами из бота: https://t.me/Jacque_Fresco_memes"
+               "/help - помощь\n" \
+               "/dm  -  Текст//текст генерирует демотиватор\n" \
+               "/cas  -<коэффициент> (по стандарту  30)  Content Aware Scale, сжимает фото\n" \
+               "/contrast  - <коэффициент>  (по стандарту -100) Повышение контраста\n" \
+               "/swirl - <коэффициент> (по стандарту 90) Применяет эффект \"Вихрь\"\n" \
+               "/wave  - <Амплитуда волны> <Размер волны> (по стандарту 30 и 90) Применяет эффект \"Волна\"\n" \
+               "/stats - Статистика бота\n" \
+               "Канал с демотиваторами из бота: https://t.me/Jacque_Fresco_memes"
 
 
 @dp.message_handler(Command(['dm'], ignore_caption=False), content_types=[ContentType.TEXT, ContentType.PHOTO])
@@ -101,6 +100,7 @@ async def swirl(message: types.Message):
         await bot.send_photo(chat_id=message.chat.id, photo=InputFile(photo))
         os.remove(photo)
     await statistics_write(message.chat.id)
+
 
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)

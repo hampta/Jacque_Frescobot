@@ -1,6 +1,4 @@
 from PIL import Image, ImageDraw, ImageFont
-import aiohttp
-import aiofiles
 import textwrap
 
 font = "TimesNewRomanPSMT.ttf"
@@ -51,13 +49,3 @@ def auto(self, text1, text2=''):
         h2 += 25
     base.save(f'{self}')
     return f'{self}'
-
-
-async def dem_gen(self):
-    name = self.replace("/", "")[27:]
-    async with aiohttp.ClientSession() as session:
-        async with session.get(self) as resp:
-            f = await aiofiles.open(f'tmp/{name}', mode='wb')
-            await f.write(await resp.read())
-            await f.close()
-            return name
